@@ -36,7 +36,7 @@ The pipeline was developed and tested in the following environment:
 The following directory layout is assumed by the scripts and notebooks.
 
 ```
-bachelorProjekt/
+AnomalyDetection-StageWiseEvaluation-IsoForest-RuleBased/
 ├── data/
 │   ├── timestampAddSekAndEnd.py
 │   ├── flow_csv/
