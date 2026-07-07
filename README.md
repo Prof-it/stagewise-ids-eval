@@ -86,10 +86,6 @@ Included:
 
 If these files are used from OneDrive, **steps 1, 2, and 3** of the pipeline can be skipped.
 
-## Note on file paths
-
-The notebooks and scripts use absolute paths pointing to the directory `/home/ginanski/bachelorProjekt/`. These must be adjusted to your own storage location before the first execution. The relevant paths are located at the beginning of the notebooks and scripts in the configuration sections.
-
 ## Installation
 
 ### 1. Set up Python environment
@@ -172,7 +168,7 @@ The following bash script runs Snort sequentially on all PCAP files and collects
 
 ```bash
 for pcap in data/pcap/*.pcap; do
-    echo "Verarbeite: $pcap"
+    echo "Processing: $pcap"
     rm -f snort/logs/alert_csv.txt
     snort -q \
       -c /usr/local/snort3/etc/snort/snort.lua \
