@@ -1,8 +1,41 @@
+# Related publication
+
+
+This repository accompanies the paper:
+> **Beyond E2E Metrics: Evaluating Incremental Contributions in Cascaded Hybrid IDS** (G. Bilinski, T. Lu, in review, IEEE ETECOM 2026) – see [`paper/main.tex`](paper/main.tex)
+
+If using this code or methodology for research, please cite the above paper when available, and/or this repository.
+# Repository Purpose & Reproducibility
+
+
+This repository contains the complete code, data processing, and evaluation pipeline supporting the paper _"Beyond E2E Metrics: Evaluating Incremental Contributions in Cascaded Hybrid IDS"_ (in review, IEEE ETECOM 2026). It is an **extension of the original bachelor's thesis (_"Evaluation des Zusatznutzens unüberwachter Anomalieerkennung in hybriden Intrusion-Detection-Systemen"_)**, with additional development, analysis, and documentation for open, reproducible research.
+
+All experiment steps, evaluation logic, and all result figures/tables referenced in the paper can be exactly reproduced using the scripts and notebooks in this repository. See [Reproducibility & Navigation for the Paper](#reproducibility--navigation-for-the-paper) for a guide mapping between each main methodology/result (metric, table, or figure) in the paper and the corresponding scripts/outputs.
+## Reproducibility & Navigation for the Paper
+
+
+This repository provides all code, scripts, and result files for full reproducibility (see [`paper/main.tex`](paper/main.tex)). For each main stage, metric, or result table/figure, use the mapping below:
+
+- **Data Preparation & Preprocessing** (see Sec. 3 "Experimental Setup"):
+   - `data/timestampAddSekAndEnd.py`: Generates time-precise flows.
+   - `data/flow_csv/prepared/`: Time-aligned CSVs for all experiment days.
+   - `snort/matchingSnort.ipynb`: Bidirectional 5-tuple flow matching and alert assignment. Produces the residual set and provides sensitivity analysis results (see Table~2, matching tolerance Table~5 in paper).
+
+- **Snort Detection & Residual Construction** (Sec. 4.1–4.2, Figure 2, Table 3):
+   - Run/config files in `snort/`, alerts in `logs/alert_csvGesamt.txt`, and the residual calculation outputs (see confusion matrix, per-class recall, and precision breakdown; used for paper's Figure 2 and Table 3).
+
+- **Anomaly Detection, Feature Selection & Evaluation** (Sec. 4.2–4.3, Table 4, Table of selected features, feature comparison Table 5/6):
+   - `iForest/isolationForest.ipynb`: Implements full anomaly detection protocol including feature selection, model training, threshold calibration (at 1% FPR and others), and repeated random-state evaluation.
+   - Tables reproduced: Feature selection output (see paper's Table~1/"selected features"), feature set comparison (Table~5/6), and all plots (confusion matrices, tradeoff/threshold curves for CDR, ΔRecall, ΔFPR, and per-class results). 
+   - Outputs and figures for every main result are in `iForest/figures/`.
+   - All metrics—**Conditional Detection Rate (CDR), ΔRecall, ΔFPR**—and per-class breakdowns (Table~7: attack-class CDRs) are computed in this notebook and saved in outputs/figures.
+   - **Parameter Settings/Variants:** All important experiment settings (feature sets, thresholds, tolerance, etc.) are visible in the notebook and referenced by table/section in `main.tex`.
+
+For methodology details, all metric definitions, and guidance on pipeline replication, see `paper/main.tex`, especially Sec. 3–4 and the corresponding result table/figure captions.
+
 # Hybrid IDS – Snort + Isolation Forest
 
-This repository contains the complete code for the bachelor's thesis _"Evaluation des Zusatznutzens unüberwachter Anomalieerkennung in hybriden Intrusion-Detection-Systemen"_.
-
-The implemented pipeline combines Snort as a signature-based first detection stage with an Isolation Forest as an unsupervised second detection stage on the CICIDS2017 dataset.
+The implemented pipeline combines Snort as a signature-based first detection stage with an Isolation Forest as an unsupervised second detection stage on the CICIDS2017 dataset. All pipeline logic, metrics, and intermediate results directly support the incremental and conditional stage-wise evaluation paradigm of the accompanying paper.
 
 ## Repository contents
 
