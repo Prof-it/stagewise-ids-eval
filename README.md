@@ -1,14 +1,25 @@
-# Related publication
+## 📚 Publication
+
+This repository accompanies the following research contribution:
+
+* **Bilinski, G. and Lu, T. (2026).** *Beyond E2E Metrics: Evaluating Incremental Contributions in Cascaded Hybrid IDS.* IEEE 2026 International Conference on Emerging Trends in Engineering and Computing (ETECOM), Paris, France, 26–27 October 2026. **Accepted.**
+* 
+It is an **extension of the original bachelor's thesis (*"Evaluation des Zusatznutzens unüberwachter Anomalieerkennung in hybriden Intrusion-Detection-Systemen"*)**, with additional development, analysis, and documentation for open, reproducible research. If using this code or methodology for research, please cite the above paper when available, and/or this repository.
 
 
-This repository accompanies the paper:
-> **Beyond E2E Metrics: Evaluating Incremental Contributions in Cascaded Hybrid IDS** (G. Bilinski, T. Lu, in review, IEEE ETECOM 2026) – see [`paper/main.tex`](paper/main.tex)
+```bibtex
+@inproceedings{bilinski_lu_2026_ids,
+  author    = {Bilinski, Gina and Lu, Tianxiang},
+  title     = {Beyond E2E Metrics: Evaluating Incremental Contributions in Cascaded Hybrid IDS},
+  booktitle = {IEEE 2026 International Conference on Emerging Trends in Engineering and Computing (ETECOM)},
+  year      = {2026},
+  address   = {Paris, France},
+  month     = oct,
+  note      = {Accepted, 26--27 October 2026}
+}
+```
 
-If using this code or methodology for research, please cite the above paper when available, and/or this repository.
 # Repository Purpose & Reproducibility
-
-
-This repository contains the complete code, data processing, and evaluation pipeline supporting the paper _"Beyond E2E Metrics: Evaluating Incremental Contributions in Cascaded Hybrid IDS"_ (in review, IEEE ETECOM 2026). It is an **extension of the original bachelor's thesis (_"Evaluation des Zusatznutzens unüberwachter Anomalieerkennung in hybriden Intrusion-Detection-Systemen"_)**, with additional development, analysis, and documentation for open, reproducible research.
 
 All experiment steps, evaluation logic, and all result figures/tables referenced in the paper can be exactly reproduced using the scripts and notebooks in this repository. See [Reproducibility & Navigation for the Paper](#reproducibility--navigation-for-the-paper) for a guide mapping between each main methodology/result (metric, table, or figure) in the paper and the corresponding scripts/outputs.
 ## Reproducibility & Navigation for the Paper
@@ -231,3 +242,6 @@ Open `iForest/isolationForest.ipynb` in Jupyter or VSCode and run all cells in o
 - Confusion matrix, precision, recall, F1 score, PR-AUC
 - Pipeline metrics: CDR, ΔRecall, ΔFPR, hybrid recall, hybrid FPR
 - `iForest/figures/` – all figures
+
+
+
