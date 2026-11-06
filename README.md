@@ -2,7 +2,7 @@
 
 This repository accompanies the following research contribution:
 
-* **Bilinski, G. and Lu, T. (2026).** *Beyond E2E Metrics: Evaluating Incremental Contributions in Cascaded Hybrid IDS.* IEEE 2026 International Conference on Emerging Trends in Engineering and Computing (ETECOM), Paris, France, 26–27 October 2026. **Accepted.**
+* **Bilinski, G. and Lu, T. (2026).** *Beyond E2E Metrics: Evaluating Incremental Contributions in Cascaded Hybrid IDS.* IEEE 2026 International Conference on Emerging Trends in Engineering and Computing (ETECOM), Paris, France, 26–27 October 2026. **In Press**
 * 
 It is an **extension of the original bachelor's thesis (*"Evaluation des Zusatznutzens unüberwachter Anomalieerkennung in hybriden Intrusion-Detection-Systemen"*)**, with additional development, analysis, and documentation for open, reproducible research. If using this code or methodology for research, please cite the above paper when available, and/or this repository.
 
@@ -15,7 +15,7 @@ It is an **extension of the original bachelor's thesis (*"Evaluation des Zusatzn
   year      = {2026},
   address   = {Paris, France},
   month     = oct,
-  note      = {Accepted, 26--27 October 2026}
+  note      = {In press, 26--27 October 2026}
 }
 ```
 
@@ -25,24 +25,24 @@ All experiment steps, evaluation logic, and all result figures/tables referenced
 ## Reproducibility & Navigation for the Paper
 
 
-This repository provides all code, scripts, and result files for full reproducibility (see [`paper/main.tex`](paper/main.tex)). For each main stage, metric, or result table/figure, use the mapping below:
+This repository provides all code, scripts, and result files for full reproducibility (the accompanying paper manuscript is not part of this repository). For each main stage, metric, or result table/figure, use the mapping below:
 
 - **Data Preparation & Preprocessing** (see Sec. 3 "Experimental Setup"):
    - `data/timestampAddSekAndEnd.py`: Generates time-precise flows.
    - `data/flow_csv/prepared/`: Time-aligned CSVs for all experiment days.
-   - `snort/matchingSnort.ipynb`: Bidirectional 5-tuple flow matching and alert assignment. Produces the residual set and provides sensitivity analysis results (see Table~2, matching tolerance Table~5 in paper).
+   - `snort/matchingSnort.ipynb`: Bidirectional 5-tuple flow matching and alert assignment. Produces the residual set and provides sensitivity analysis results (see Table 2, matching tolerance Table 5 in paper).
 
 - **Snort Detection & Residual Construction** (Sec. 4.1–4.2, Figure 2, Table 3):
    - Run/config files in `snort/`, alerts in `logs/alert_csvGesamt.txt`, and the residual calculation outputs (see confusion matrix, per-class recall, and precision breakdown; used for paper's Figure 2 and Table 3).
 
 - **Anomaly Detection, Feature Selection & Evaluation** (Sec. 4.2–4.3, Table 4, Table of selected features, feature comparison Table 5/6):
    - `iForest/isolationForest.ipynb`: Implements full anomaly detection protocol including feature selection, model training, threshold calibration (at 1% FPR and others), and repeated random-state evaluation.
-   - Tables reproduced: Feature selection output (see paper's Table~1/"selected features"), feature set comparison (Table~5/6), and all plots (confusion matrices, tradeoff/threshold curves for CDR, ΔRecall, ΔFPR, and per-class results). 
+   - Tables reproduced: Feature selection output (see paper's Table 1/"selected features"), feature set comparison (Table 5/6), and all plots (confusion matrices, tradeoff/threshold curves for CDR, ΔRecall, ΔFPR, and per-class results). 
    - Outputs and figures for every main result are in `iForest/figures/`.
-   - All metrics—**Conditional Detection Rate (CDR), ΔRecall, ΔFPR**—and per-class breakdowns (Table~7: attack-class CDRs) are computed in this notebook and saved in outputs/figures.
-   - **Parameter Settings/Variants:** All important experiment settings (feature sets, thresholds, tolerance, etc.) are visible in the notebook and referenced by table/section in `main.tex`.
+   - All metrics—**Conditional Detection Rate (CDR), ΔRecall, ΔFPR**—and per-class breakdowns (Table 7: attack-class CDRs) are computed in this notebook and saved in outputs/figures.
+   - **Parameter Settings/Variants:** All important experiment settings (feature sets, thresholds, tolerance, etc.) are visible in the notebook and referenced by table/section in the paper.
 
-For methodology details, all metric definitions, and guidance on pipeline replication, see `paper/main.tex`, especially Sec. 3–4 and the corresponding result table/figure captions.
+For methodology details, all metric definitions, and guidance on pipeline replication, see the accompanying paper, especially Sec. 3–4 and the corresponding result table/figure captions.
 
 # Hybrid IDS – Snort + Isolation Forest
 
@@ -80,7 +80,7 @@ The pipeline was developed and tested in the following environment:
 The following directory layout is assumed by the scripts and notebooks.
 
 ```
-AnomalyDetection-StageWiseEvaluation-IsoForest-RuleBased/
+stagewise-ids-eval/
 ├── data/
 │   ├── timestampAddSekAndEnd.py
 │   ├── flow_csv/
