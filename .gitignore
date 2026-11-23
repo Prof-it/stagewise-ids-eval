@@ -1,1 +1,20 @@
 .runbook/*
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+.ipynb_checkpoints/
+
+# Large data (download separately, see README)
+data/pcap/*.pcap
+data/flow_csv/**/*.csv
+data/ml_csv/*.csv
+snort/logs/*.txt
+snort/residuals/*.csv
+snort/rules/
+
+# OS / editor
+.DS_Store
+.vscode/
